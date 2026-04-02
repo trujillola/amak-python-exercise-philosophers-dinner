@@ -1,11 +1,11 @@
-from amak import MAS
+from amak import MAS, ExecutionPolicy
 
 from entities import Fork, PhilosopherAgent
 
 
 class PhilosophersDinnerMAS(MAS):
     def __init__(self, environment, results):
-        super().__init__(environment)
+        super().__init__(environment, execution_policy=ExecutionPolicy.TWO_PHASES)
         self.cycles_count = 0
         self.results = results
 

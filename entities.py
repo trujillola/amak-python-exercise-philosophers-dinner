@@ -7,13 +7,19 @@ class Fork:
         self.holder = None
 
     def take(self, agent):
-        self.available = False
-        self.holder = agent
-
-    def put(self):
-        self.available = True
-        self.holder = None
-
+        if self.available:
+            self.available = False
+            self.holder = agent
+            return True
+        return False
+        
+    def put(self, agent):
+        if self.holder == agent:
+            self.available = True
+            self.holder = None
+            return True
+        return False
+        
     def is_taken_by(self, agent):
         return self.holder == agent
 
